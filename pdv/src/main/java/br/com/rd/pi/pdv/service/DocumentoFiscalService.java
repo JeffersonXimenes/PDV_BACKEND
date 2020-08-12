@@ -20,14 +20,12 @@ public class DocumentoFiscalService {
     private DocumentoFiscalBO documentoFiscalBO;
 
     public List<DocumentoFiscalDTO> buscarTodosDoc(){
-        List <DocumentoFiscalDTO> listaClientes = new ArrayList<>();
+        List <DocumentoFiscalDTO> listaDocumento = new ArrayList<>();
 
         for (DocumentoFiscalEntity entity: repository.findAll()) {
             DocumentoFiscalDTO dto = documentoFiscalBO.parseToDTO(entity);
-            listaClientes.add(dto);
+            listaDocumento.add(dto);
         }
-        return listaClientes;
+        return listaDocumento;
     }
-
-
 }

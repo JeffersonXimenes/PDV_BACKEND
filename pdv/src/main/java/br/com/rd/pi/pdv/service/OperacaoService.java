@@ -4,7 +4,9 @@ import br.com.rd.pi.pdv.model.dto.OperacaoDTO;
 import br.com.rd.pi.pdv.repository.OperacaoRepository;
 import br.com.rd.pi.pdv.service.bo.OperacaoBO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class OperacaoService {
 
     @Autowired

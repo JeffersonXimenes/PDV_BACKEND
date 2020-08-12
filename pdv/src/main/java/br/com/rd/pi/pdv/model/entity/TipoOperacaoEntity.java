@@ -1,10 +1,17 @@
 package br.com.rd.pi.pdv.model.entity;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
+
+
+@Entity
+@Table(name = "TB_TIPO_OPERACAO")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class TipoOperacaoEntity {
 
     @Id

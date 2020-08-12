@@ -2,7 +2,9 @@ package br.com.rd.pi.pdv.service.bo;
 
 import br.com.rd.pi.pdv.model.dto.DocumentoItemDTO;
 import br.com.rd.pi.pdv.model.entity.DocumentoItemEntity;
+import org.springframework.stereotype.Component;
 
+@Component
 public class DocumentoItemBO {
 
     public DocumentoItemDTO parseToDTO(DocumentoItemEntity entity){
