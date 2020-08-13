@@ -15,7 +15,7 @@ public class DocumentoFiscalBO {
 
         dto.setIdDocumentoFiscal(entity.getIdDocumentoFiscal());
         dto.setCdFilial(entity.getCdFilial());
-        dto.setIdCliente(entity.getIdCliente());
+        dto.setIdCliente(entity.getCliente());
         dto.setIdRecarga(entity.getIdRecarga());
         dto.setDataAbertura(entity.getDataAbertura());
         dto.setDataFechamento(entity.getDataFechamento());

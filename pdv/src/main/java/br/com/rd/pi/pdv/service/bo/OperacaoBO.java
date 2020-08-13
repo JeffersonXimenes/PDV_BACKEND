@@ -2,10 +2,15 @@ package br.com.rd.pi.pdv.service.bo;
 
 import br.com.rd.pi.pdv.model.dto.OperacaoDTO;
 import br.com.rd.pi.pdv.model.entity.OperacaoEntity;
+import br.com.rd.pi.pdv.repository.TipoOperacaoRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class OperacaoBO {
+
+    @Autowired
+    private TipoOperacaoRepository tipoOpRepository;
 
     public OperacaoDTO parseToDTO(OperacaoEntity entity){
         OperacaoDTO dto = new OperacaoDTO();
@@ -14,7 +19,7 @@ public class OperacaoBO {
             return dto;
 
         dto.setCdOperacao(entity.getCdOperacao());
-        dto.setIdTipoOperacao(entity.getIdTipoOperacao());
+        dto.setTipoOperacao(entity.getTipoOperacao().getIdTipoOperacao());
         dto.setDescricaoOperacao(entity.getDescricaoOperacao());
 
         return dto;
@@ -28,7 +33,7 @@ public class OperacaoBO {
             return entity;
 
         entity.setCdOperacao(dto.getCdOperacao());
-        entity.setIdTipoOperacao(dto.getIdTipoOperacao());
+        entity.setTipoOperacao(tipoOpRepository.getOne(dto.getTipoOperacao()));
         entity.setDescricaoOperacao(dto.getDescricaoOperacao());
 
         return entity;

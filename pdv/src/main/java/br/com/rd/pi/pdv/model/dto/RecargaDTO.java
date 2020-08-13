@@ -7,10 +7,13 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class OperacaoDTO {
+public class RecargaDTO {
 
-    private Long cdOperacao;
-    private Long tipoOperacao;
-    private String descricaoOperacao;
+    private Long idRecarga;
 
+    private String numeroTelefone;
+
+    private double valorRecarga;
+
+    private Long idOperadora;
 }

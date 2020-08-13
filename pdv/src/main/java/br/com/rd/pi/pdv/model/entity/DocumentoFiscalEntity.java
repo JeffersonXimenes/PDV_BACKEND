@@ -24,19 +24,15 @@ public class DocumentoFiscalEntity {
     @ManyToOne
     private OperacaoEntity cdOperacao;
 
+    @ManyToOne
+    @JoinColumn(name = "CD_FILIAL")
+    private FilialEntity cdFilial;
 
-    //@JoinColumn(name = "CD_FILIAL")
-    //private FilialEntity cdFilial;
-
-    @Column(name = "CD_FILIAL")
-    private Long cdFilial;
-
-
-    @Column(name = "ID_CLIENTE")
+    @ManyToOne
     @JoinColumn(name = "ID_CLIENTE")
-//    private ClienteEntity idCliente;
-    private Long idCliente;
+    private ClienteEntity cliente;
 
+    @ManyToOne
     //@JoinColumn(name = "ID_RECARGA")
     @Column(name = "ID_RECARGA")
     //private RecargaEntity idRecarga;
@@ -60,29 +56,5 @@ public class DocumentoFiscalEntity {
     @OneToMany
     @JoinColumn(name = "ID_NF")
     private List<DocumentoItemEntity> itens;
-
-    //campos do doc fiscal que nao sabemos se iremos utilizar
-//    @Column(name = "ID_FORNECEDOR")
-//    private Long idFornecedor;
-
-//    @Column(name = "ID_MOTIVO")
-//    private Long idMotivo;
-
-//    @Column(name = "NR_NF")
-//    private Long numeroNota;
-//
-//    @Column(name = "NR_CHAVE_ACESSO")
-//    private Long numeroChaveAcesso;
-//
-//    @Column(name = "NR_SERIE")
-//    private Long numeroSerie;
-//
-//    @Column(name = "DT_EMISSAO")
-//    private Date dataEmissao;
-
-//    @Column(name = "DT_ENTRADA")
-//    private Date dataEntrada;
-
-
 
 }

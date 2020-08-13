@@ -18,8 +18,9 @@ public class OperacaoEntity {
     @Column(name = "CD_OPERACAO")
     private Long cdOperacao;
 
-    @Column(name = "ID_TIPO_OPERACAO")
-    private Long idTipoOperacao;
+    @OneToMany
+    @JoinColumn(name = "ID_TIPO_OPERACAO")
+    private TipoOperacaoEntity tipoOperacao;
 
     @Column(name = "DS_OPERACAO")
     private String descricaoOperacao;

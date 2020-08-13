@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class DocumentoItemDTO {
 
-    private Long idDocumento;
+    private Long documentoFiscal;
 
     private Long numItemDoc;
 

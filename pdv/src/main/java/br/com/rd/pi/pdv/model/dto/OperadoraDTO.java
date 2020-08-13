@@ -4,13 +4,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class OperacaoDTO {
+public class OperadoraDTO {
 
-    private Long cdOperacao;
-    private Long tipoOperacao;
-    private String descricaoOperacao;
+    private Long idOperadora;
 
+    private String descricaoOperadora;
 }

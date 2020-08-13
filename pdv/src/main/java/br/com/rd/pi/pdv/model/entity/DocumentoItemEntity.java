@@ -14,22 +14,19 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class DocumentoItemEntity {
 
-    @Column(name = "ID_DOCUMENTO")
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ID_DOCUMENTO")
     @JsonIgnore
     @Id
-    private Long idDocumento;
+    private DocumentoFiscalEntity documentoFiscal;
 
     @Id
     @Column(name = "NR_ITEM_DOCUMENTO")
     private Long numItemDoc;
 
-//    @ManyToOne
-    @Column(name = "CD_PRODUTO")
-//    @JoinColumn(name = "CD_PRODUTO")
-//    private ProdutoEntity cdProduto;
-    private Long cdProduto;
+    @ManyToOne
+    @JoinColumn(name = "CD_PRODUTO")
+    private ProdutoEntity cdProduto;
 
     @Column (name = "QT_ITEM")
     private Long qtdItem;

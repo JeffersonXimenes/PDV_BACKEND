@@ -7,10 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class OperacaoDTO {
-
-    private Long cdOperacao;
-    private Long tipoOperacao;
-    private String descricaoOperacao;
-
+public class TipoPagamentoDTO {
+    private Long idTipoPagamento;
+    private String dsTipoPagamento;
 }
