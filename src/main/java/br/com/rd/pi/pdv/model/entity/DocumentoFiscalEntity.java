@@ -33,10 +33,8 @@ public class DocumentoFiscalEntity {
     private ClienteEntity cliente;
 
     @ManyToOne
-    //@JoinColumn(name = "ID_RECARGA")
-    @Column(name = "ID_RECARGA")
-    //private RecargaEntity idRecarga;
-    private Long idRecarga;
+    @JoinColumn(name = "ID_RECARGA")
+    private RecargaEntity recarga;
 
     @Column(name = "DT_ABERTURA")
     private Date dataAbertura;

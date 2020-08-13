@@ -6,13 +6,15 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "TB_DOCUMENTO_FISCAL_ITEM")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class DocumentoItemEntity {
+@IdClass(DocumentoItemEntity.class)
+public class DocumentoItemEntity implements Serializable {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ID_DOCUMENTO")

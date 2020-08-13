@@ -18,7 +18,7 @@ public class OperacaoEntity {
     @Column(name = "CD_OPERACAO")
     private Long cdOperacao;
 
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name = "ID_TIPO_OPERACAO")
     private TipoOperacaoEntity tipoOperacao;
 
