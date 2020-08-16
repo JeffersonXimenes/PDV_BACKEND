@@ -15,6 +15,7 @@ public class ClienteBO {
 
         dto.setIdCliente(entity.getIdCliente());
         dto.setNumeroCpf(entity.getNumeroCpf());
+        dto.setEmail(entity.getEmail());
 
         return dto;
     }
@@ -28,6 +29,7 @@ public class ClienteBO {
 
         entity.setIdCliente(dto.getIdCliente());
         entity.setNumeroCpf(dto.getNumeroCpf());
+        entity.setEmail(dto.getEmail());
 
         return entity;
     }
