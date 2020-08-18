@@ -1,6 +1,5 @@
 package br.com.rd.pi.pdv.service;
 
-import br.com.rd.pi.pdv.model.dto.ProdutoDTO;
 import br.com.rd.pi.pdv.model.entity.ProdutoEntity;
 import br.com.rd.pi.pdv.repository.ProdutoRepository;
 import br.com.rd.pi.pdv.service.bo.ProdutoBO;
@@ -19,7 +18,6 @@ public class ProdutoService {
     public ProdutoEntity buscarProdutoId(Long codigo){
 
         return repository.getOne(codigo);
-
     }
 
 }
