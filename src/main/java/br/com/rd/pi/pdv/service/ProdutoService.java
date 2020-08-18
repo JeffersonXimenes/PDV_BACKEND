@@ -1,6 +1,7 @@
 package br.com.rd.pi.pdv.service;
 
 import br.com.rd.pi.pdv.model.dto.ProdutoDTO;
+import br.com.rd.pi.pdv.model.entity.ProdutoEntity;
 import br.com.rd.pi.pdv.repository.ProdutoRepository;
 import br.com.rd.pi.pdv.service.bo.ProdutoBO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,8 +16,9 @@ public class ProdutoService {
     @Autowired
     private ProdutoBO produtoBO;
 
-    public ProdutoDTO buscarProdutoId(Long codigo){
-        return produtoBO.parseToDTO(repository.getOne(codigo));
+    public ProdutoEntity buscarProdutoId(Long codigo){
+
+        return repository.getOne(codigo);
     }
 
 }
