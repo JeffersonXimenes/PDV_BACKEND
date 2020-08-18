@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -16,4 +18,8 @@ public class RecargaDTO {
     private double valorRecarga;
 
     private Long idOperadora;
+
+    //@OneToMany(mappedBy = "item", cascade = CascadeType.ALL)
+    private List<OperadoraDTO> items;
 }
+

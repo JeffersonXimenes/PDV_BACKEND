@@ -5,13 +5,14 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "TB_OPERACAO")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class OperacaoEntity {
+public class OperacaoEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,6 +21,7 @@ public class OperacaoEntity {
 
     @ManyToOne
     @JoinColumn(name = "ID_TIPO_OPERACAO")
+    //@Column(name = "ID_TIPO_OPERACAO")
     private TipoOperacaoEntity tipoOperacao;
 
     @Column(name = "DS_OPERACAO")

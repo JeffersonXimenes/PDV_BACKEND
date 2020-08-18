@@ -7,6 +7,9 @@ import br.com.rd.pi.pdv.service.bo.ClienteBO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class ClienteService {
 
@@ -18,6 +21,17 @@ public class ClienteService {
 
     public ClienteDTO buscarClienteId(Long codigo){
         return clienteBO.parseToDTO(repository.getOne(codigo));
+    }
+
+    public List<ClienteDTO> buscarTodosCliente(){
+        List<ClienteEntity> listEntity = repository.findAll();
+        List<ClienteDTO> listDTO = new ArrayList<>();
+
+        for(ClienteEntity entity : listEntity){
+            ClienteDTO dto = clienteBO.parseToDTO(entity);
+            listDTO.add(dto);
+        }
+        return listDTO;
     }
 
     public void inserir (ClienteDTO dto){

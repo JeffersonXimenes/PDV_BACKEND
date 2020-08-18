@@ -17,4 +17,5 @@ public class ProdutoController {
     public ResponseEntity buscarProduto(@PathVariable("codigo") Long codigo){
         return ResponseEntity.ok().body(service.buscarProdutoId(codigo));
     }
+
 }
