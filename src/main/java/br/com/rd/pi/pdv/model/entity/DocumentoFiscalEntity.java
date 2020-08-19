@@ -14,7 +14,8 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class DocumentoFiscalEntity implements Serializable  {
+
+public class DocumentoFiscalEntity implements Serializable {
 
     @Id
     @GeneratedValue

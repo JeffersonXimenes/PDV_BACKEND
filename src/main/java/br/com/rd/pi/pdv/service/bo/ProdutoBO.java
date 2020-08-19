@@ -15,7 +15,7 @@ public class ProdutoBO {
 
         dto.setCdProduto(entity.getCdProduto());
         dto.setValorProduto(entity.getValorProduto());
-        dto.setDescricaoProduto(entity.getDescricaoProduto());
+//        dto.setDescricaoProduto(entity.getDescricaoProduto());
 
         return dto;
     }

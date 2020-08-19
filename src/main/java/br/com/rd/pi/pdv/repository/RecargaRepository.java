@@ -9,6 +9,5 @@ import java.util.List;
 
 @Repository
 public interface RecargaRepository extends JpaRepository<RecargaEntity, Long> {
-
-    List <RecargaEntity> findByOperadora(OperadoraEntity operadora);
+    List<RecargaEntity> findByOperadora(OperadoraEntity operadora);
 }
