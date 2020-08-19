@@ -12,6 +12,7 @@ import java.io.Serializable;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+
 public class OperadorEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

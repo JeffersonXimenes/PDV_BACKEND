@@ -8,8 +8,8 @@ import java.io.Serializable;
 @Entity
 @Table(name="TB_FILIAL")
 @Data
-public class FilialEntity implements Serializable  {
 
+public class FilialEntity implements Serializable  {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="CD_FILIAL")

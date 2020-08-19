@@ -7,11 +7,16 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.io.Serializable;
 
+
+import java.util.List;
+
+
 @Entity
 @Table(name = "TB_OPERADORA")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+
 public class OperadoraEntity implements Serializable {
 
     @Id

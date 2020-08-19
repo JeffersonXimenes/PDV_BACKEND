@@ -1,11 +1,14 @@
 package br.com.rd.pi.pdv.model.entity;
 
+import br.com.rd.pi.pdv.model.dto.OperadoraDTO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
+
+import java.util.List;
 
 @Entity
 @Table(name = "TB_RECARGA")

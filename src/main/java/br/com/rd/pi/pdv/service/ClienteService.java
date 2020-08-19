@@ -1,7 +1,11 @@
 package br.com.rd.pi.pdv.service;
 
 import br.com.rd.pi.pdv.model.dto.ClienteDTO;
+import br.com.rd.pi.pdv.model.dto.PagamentoDocDTO;
+import br.com.rd.pi.pdv.model.dto.RecargaDTO;
 import br.com.rd.pi.pdv.model.entity.ClienteEntity;
+import br.com.rd.pi.pdv.model.entity.PagamentoDocEntity;
+import br.com.rd.pi.pdv.model.entity.RecargaEntity;
 import br.com.rd.pi.pdv.repository.ClienteRepository;
 import br.com.rd.pi.pdv.service.bo.ClienteBO;
 import org.springframework.beans.factory.annotation.Autowired;

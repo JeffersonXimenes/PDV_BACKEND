@@ -3,6 +3,10 @@ package br.com.rd.pi.pdv.service.bo;
 import br.com.rd.pi.pdv.model.dto.RecargaDTO;
 import br.com.rd.pi.pdv.model.entity.RecargaEntity;
 import br.com.rd.pi.pdv.repository.OperadoraRepository;
+
+
+import br.com.rd.pi.pdv.repository.RecargaRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

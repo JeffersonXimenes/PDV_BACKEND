@@ -13,6 +13,7 @@ import java.io.Serializable;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class ProdutoEntity implements Serializable {
 
