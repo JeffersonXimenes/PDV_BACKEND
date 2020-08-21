@@ -1,6 +1,7 @@
 package br.com.rd.pi.pdv.controller;
 
 import br.com.rd.pi.pdv.model.dto.RecargaDTO;
+import br.com.rd.pi.pdv.service.DocumentoFiscalService;
 import br.com.rd.pi.pdv.service.RecargaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +12,9 @@ public class RecargaController {
 
     @Autowired
     private RecargaService service;
+
+    @Autowired
+    private DocumentoFiscalService documentoFiscalService;
 
     @GetMapping("/Recarga")
     public ResponseEntity buscarTodas(){

@@ -1,5 +1,6 @@
 package br.com.rd.pi.pdv;
 
+import br.com.rd.pi.pdv.service.bo.FilialBO;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
