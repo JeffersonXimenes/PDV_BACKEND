@@ -1,12 +1,9 @@
-package br.com.rd.pi.pdv.service.bo;
+package br.com.rd.pi.pdv.bo;
 
 import br.com.rd.pi.pdv.model.dto.FilialDTO;
 import br.com.rd.pi.pdv.model.entity.FilialEntity;
-import org.springframework.stereotype.Component;
 
-@Component
-public class FilialBO {
-
+public class FilialBo {
     public FilialDTO parseToDTO(FilialEntity entity){
         FilialDTO dto = new FilialDTO();
         if (entity == null)
@@ -16,6 +13,7 @@ public class FilialBO {
         dto.setNmFilial(entity.getNmFilial());
         dto.setNrTelefone(entity.getNrTelefone());
         return dto;
+
     }
 
     public FilialEntity parseToEntity(FilialDTO dto, FilialEntity entity){
@@ -28,6 +26,17 @@ public class FilialBO {
         entity.setNmFilial(dto.getNmFilial());
         entity.setNrTelefone((dto.getNrTelefone()));
         return entity;
+
+
     }
 
+
+
+
+
+
 }
+
+
+
+

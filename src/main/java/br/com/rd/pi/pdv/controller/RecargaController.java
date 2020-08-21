@@ -31,5 +31,4 @@ public class RecargaController {
     public ResponseEntity buscarDsOperadora(@PathVariable("idOperadora") Long idOperadora) {
         return ResponseEntity.ok().body(service.buscarPorIdOperadora(idOperadora));
     }
-
 }
