@@ -1,12 +1,17 @@
 package br.com.rd.pi.pdv.service.bo;
 
+import br.com.rd.pi.pdv.model.dto.DocumentoItemDTO;
 import br.com.rd.pi.pdv.model.entity.DocumentoFiscalEntity;
 import br.com.rd.pi.pdv.model.dto.DocumentoFiscalDTO;
+import br.com.rd.pi.pdv.model.entity.DocumentoItemEntity;
 import br.com.rd.pi.pdv.repository.ClienteRepository;
 import br.com.rd.pi.pdv.repository.FilialRepository;
 import br.com.rd.pi.pdv.repository.RecargaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Component
 public class DocumentoFiscalBO {
@@ -19,6 +24,9 @@ public class DocumentoFiscalBO {
 
     @Autowired
     private RecargaRepository recargaRepository;
+
+    @Autowired
+    private DocumentoItemBO documentoItemBO;
 
     public DocumentoFiscalDTO parseToDTO(DocumentoFiscalEntity entity){
         DocumentoFiscalDTO dto = new DocumentoFiscalDTO();
@@ -57,6 +65,13 @@ public class DocumentoFiscalBO {
         entity.setValorDocumento(dto.getValorDocumento());
         entity.setNumeroCaixa(dto.getNumeroCaixa());
 
+        List <DocumentoItemEntity> entidadeItem  = new ArrayList <>();
+
+        for (DocumentoItemDTO itemDTO: dto.getItens()) {
+            entidadeItem.add(documentoItemBO.parseToEntity(itemDTO,null));
+
+        }
+        entity.setItens(entidadeItem);
 
         return entity;
     }

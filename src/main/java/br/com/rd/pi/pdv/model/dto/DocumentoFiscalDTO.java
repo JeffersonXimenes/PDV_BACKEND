@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
+import java.util.List;
 
 
 @AllArgsConstructor
@@ -33,6 +34,8 @@ public class DocumentoFiscalDTO {
     private Double valorDocumento;
 
     private Integer numeroCaixa;
+
+    private List<DocumentoItemDTO> itens;
 
 //    private Long idMotivo;
 //
