@@ -14,7 +14,8 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-
+@NamedQuery(name = "buscarNotaPorOperacao",
+        query = "SELECT doc FROM DocumentoFiscalEntity doc where doc.operacao.cdOperacao =: operacao")
 public class DocumentoFiscalEntity implements Serializable {
 
     @Id
@@ -24,11 +25,11 @@ public class DocumentoFiscalEntity implements Serializable {
 
     @JoinColumn(name = "CD_OPERACAO")
     @ManyToOne
-    private OperacaoEntity cdOperacao;
+    private OperacaoEntity operacao;
 
     @ManyToOne
     @JoinColumn(name = "CD_FILIAL")
-    private FilialEntity cdFilial;
+    private FilialEntity filial;
 
     @ManyToOne
     @JoinColumn(name = "ID_CLIENTE")
