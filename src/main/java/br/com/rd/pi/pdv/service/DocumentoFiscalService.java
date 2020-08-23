@@ -102,7 +102,6 @@ public class DocumentoFiscalService {
         docEntity.setFlagNota(dto.getFlagNota());
         docEntity.setNumeroCaixa(dto.getNumeroCaixa());
 
-
         recargaRepository.save(recarga);
         filialRepository.save(filial);
 
