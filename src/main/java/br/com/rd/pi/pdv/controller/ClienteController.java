@@ -22,10 +22,11 @@ public class ClienteController {
     }
 
     @PostMapping("/pdv/cliente")
-    public ResponseEntity<Object> inserirCliente(@RequestBody ClienteDTO dto ) {
+    public ResponseEntity<Object> inserirCliente(@RequestBody ClienteDTO dto) {
+        if (service.buscarClienteCpf(dto.getNumeroCpf()) != null)
+            return ResponseEntity.ok().body(dto); //caso o cliente ja exista na db, retorna o proprio dto e nao insere no db
         service.inserir(dto);
         return ResponseEntity.ok().body(dto);
     }
-
 
 }

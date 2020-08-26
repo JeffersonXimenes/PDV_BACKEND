@@ -15,15 +15,13 @@ public class DocumentoFiscalDTO {
 
     private Long idDocumentoFiscal;
 
-    private Long cdOperacao;
+    private OperacaoDTO operacao;
 
-    private Long cdFilial;
+    private FilialDTO filial;
 
-    private Long idCliente;
+    private ClienteDTO cliente;
 
-    private Long idFornecedor;
-
-    private Long idRecarga;
+    private RecargaDTO recarga;
 
     private Date dataAbertura;
 
@@ -37,16 +35,5 @@ public class DocumentoFiscalDTO {
 
     private List<DocumentoItemDTO> itens;
 
-//    private Long idMotivo;
-//
-//    private Long numeroNota;
-//
-//    private Long numeroChaveAcesso;
-//
-//    private Long numeroSerie;
-//
-//    private Date dataEmissao;
-//
-//    private Date dataEntrada;
 
 }

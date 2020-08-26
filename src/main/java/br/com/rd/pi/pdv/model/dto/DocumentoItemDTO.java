@@ -9,7 +9,7 @@ public class DocumentoItemDTO {
 
     private Long numItemDoc;
 
-    private Long cdProduto;
+    private ProdutoDTO Produto;
 
     private Long qtdItem;
 

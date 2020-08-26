@@ -17,7 +17,7 @@ public class RecargaDTO {
 
     private double valorRecarga;
 
-    private Long idOperadora;
+    private OperadoraDTO operadora;
 
     //@OneToMany(mappedBy = "item", cascade = CascadeType.ALL)
     private List<OperadoraDTO> items;
