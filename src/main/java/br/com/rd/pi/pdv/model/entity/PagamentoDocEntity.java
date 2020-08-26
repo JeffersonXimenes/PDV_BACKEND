@@ -20,7 +20,7 @@ public class PagamentoDocEntity implements Serializable {
     private Long idPagamento;
 
     @Column(name = "ID_DOCUMENTO_FISCAL")
-    private Long idDocumentoFiscal;
+    private DocumentoFiscalEntity documentoFiscal;
 
     @Column(name = "VL_PAGAMENTO")
     private Double vlPagamento;

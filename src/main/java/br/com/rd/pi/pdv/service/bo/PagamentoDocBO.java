@@ -1,6 +1,7 @@
 package br.com.rd.pi.pdv.service.bo;
 
 import br.com.rd.pi.pdv.model.dto.PagamentoDocDTO;
+import br.com.rd.pi.pdv.model.entity.DocumentoFiscalEntity;
 import br.com.rd.pi.pdv.model.entity.PagamentoDocEntity;
 import br.com.rd.pi.pdv.repository.TipoPagamentoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,15 +13,18 @@ public class PagamentoDocBO {
     @Autowired
     private TipoPagamentoRepository tipoPagamentoRepository;
 
+    @Autowired
+    private DocumentoFiscalBO documentoFiscalBO;
 
-    public static PagamentoDocDTO parseToDTO(PagamentoDocEntity entity) {
+
+    public PagamentoDocDTO parseToDTO(PagamentoDocEntity entity) {
         PagamentoDocDTO dto = new PagamentoDocDTO();
 
         if(entity == null) {
             return dto;
         }
 
-        dto.setIdDocumentoFiscal(entity.getIdDocumentoFiscal());
+        dto.setDocumentoFiscal(documentoFiscalBO.parseToDTO(entity.getDocumentoFiscal()));
         dto.setIdPagamento(entity.getIdPagamento());
         dto.setVlPagamento(entity.getVlPagamento());
         dto.setIdTipoPagamento(entity.getTipoPagamento().getIdTipoPagamento());
@@ -36,7 +40,7 @@ public class PagamentoDocBO {
         if (dto == null) {
             return entity;
         }
-        entity.setIdDocumentoFiscal(dto.getIdDocumentoFiscal());
+        entity.setDocumentoFiscal(documentoFiscalBO.parseToEntity(null, dto.getDocumentoFiscal()));
         entity.setIdPagamento(dto.getIdPagamento());
         entity.setVlPagamento(dto.getVlPagamento());
         entity.setTipoPagamento(tipoPagamentoRepository.getOne(dto.getIdTipoPagamento()));

@@ -27,8 +27,6 @@ public class DocumentoFiscalController {
     private RecargaService recargaService;
 
 
-
-
     @PostMapping("/pdv/docVenda")
     public ResponseEntity<Object> inserirDocumentoVenda(@RequestBody DocumentoFiscalDTO dto) {
         ResultData resultData = null;
@@ -45,7 +43,7 @@ public class DocumentoFiscalController {
 
         else {
             try {
-                recargaService.inserir(dto.getRecarga());
+
                 documentoFiscalService.inserirVendaNormal(dto);
                 return ResponseEntity.ok().body(dto);
             } catch (Exception e) {
@@ -67,6 +65,7 @@ public class DocumentoFiscalController {
 
         else {
             try {
+                recargaService.inserir(dto.getRecarga());
                 documentoFiscalService.inserirVendaRecarga(dto);
                 return ResponseEntity.ok().body(dto);
             } catch (Exception e) {

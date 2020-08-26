@@ -4,10 +4,7 @@ import br.com.rd.pi.pdv.model.dto.ClienteDTO;
 import br.com.rd.pi.pdv.service.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 @RestController
@@ -19,6 +16,11 @@ public class ClienteController {
     @GetMapping("/pdv/cliente")
     public ResponseEntity<Object> listarTodosCliente() {
         return ResponseEntity.ok().body(service.buscarTodosCliente());
+    }
+
+    @GetMapping("/pdv/cliente/{numCpf}")
+    public ResponseEntity buscarClienteCpf(@PathVariable("numCpf") String numCpf) {
+        return ResponseEntity.ok().body(service.buscarClienteCpf(numCpf));
     }
 
     @PostMapping("/pdv/cliente")

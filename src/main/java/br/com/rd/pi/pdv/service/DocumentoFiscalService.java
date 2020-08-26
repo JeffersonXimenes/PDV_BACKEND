@@ -52,6 +52,9 @@ public class DocumentoFiscalService {
     @PersistenceContext
     private EntityManager em;
 
+    @Autowired
+    private DocumentoItemService documentoItemService;
+
     public List<DocumentoFiscalDTO> buscarTodosDoc(){
 
         List <DocumentoFiscalDTO> listaDocumento = new ArrayList<>();
@@ -97,7 +100,9 @@ public class DocumentoFiscalService {
             clienteRepository.save(cliente);
 
         filialRepository.save(filial);
+
         repository.save(docEntity);
+
 
     }
 
