@@ -19,4 +19,8 @@ public class OperadorService {
     public OperadorDTO buscarOperadorId(Long codigo){
         return operadorBO.parseToDTO(repository.getOne(codigo));
     }
+
+    public OperadorDTO buscarOperadorMatricula(String numMatricula){
+        return operadorBO.parseToDTO(repository.findByNumeroMatricula(numMatricula));
+    }
 }

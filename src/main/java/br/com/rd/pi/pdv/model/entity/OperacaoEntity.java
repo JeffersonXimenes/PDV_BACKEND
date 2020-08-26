@@ -21,7 +21,6 @@ public class OperacaoEntity implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "ID_TIPO_OPERACAO")
-    //@Column(name = "ID_TIPO_OPERACAO")
     private TipoOperacaoEntity tipoOperacao;
 
     @Column(name = "DS_OPERACAO")

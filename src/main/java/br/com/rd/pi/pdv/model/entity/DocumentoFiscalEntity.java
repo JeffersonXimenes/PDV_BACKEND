@@ -23,8 +23,8 @@ public class DocumentoFiscalEntity implements Serializable {
     @Column(name = "ID_DOCUMENTO_FISCAL")
     private Long idDocumentoFiscal;
 
-    @JoinColumn(name = "CD_OPERACAO")
     @ManyToOne
+    @JoinColumn(name = "CD_OPERACAO")
     private OperacaoEntity operacao;
 
     @ManyToOne

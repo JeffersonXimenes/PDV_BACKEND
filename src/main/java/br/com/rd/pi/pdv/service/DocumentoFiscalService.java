@@ -53,7 +53,7 @@ public class DocumentoFiscalService {
     private EntityManager em;
 
     @Autowired
-    private DocumentoItemService documentoItemService;
+    private RecargaService recargaService;
 
     public List<DocumentoFiscalDTO> buscarTodosDoc(){
 
@@ -96,10 +96,7 @@ public class DocumentoFiscalService {
 
         docEntity.setItens(itemsEntity);
 
-        if (cliente != null)
-            clienteRepository.save(cliente);
 
-        filialRepository.save(filial);
 
         repository.save(docEntity);
 
@@ -119,8 +116,6 @@ public class DocumentoFiscalService {
         docEntity.setFlagNota(dto.getFlagNota());
         docEntity.setNumeroCaixa(dto.getNumeroCaixa());
 
-        recargaRepository.save(recarga);
-        filialRepository.save(filial);
 
         repository.save(docEntity);
 

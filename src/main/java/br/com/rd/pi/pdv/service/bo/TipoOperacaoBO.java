@@ -2,7 +2,9 @@ package br.com.rd.pi.pdv.service.bo;
 
 import br.com.rd.pi.pdv.model.dto.TipoOperacaoDTO;
 import br.com.rd.pi.pdv.model.entity.TipoOperacaoEntity;
+import org.springframework.stereotype.Component;
 
+@Component
 public class TipoOperacaoBO {
 
     public TipoOperacaoDTO parseToDTO(TipoOperacaoEntity entity){

@@ -48,8 +48,12 @@ public class DocumentoFiscalBO {
         if(entity.getFilial() != null){
             dto.setFilial(filialBO.parseToDTO(entity.getFilial()));
         }
-
-        dto.setCliente(clienteBO.parseToDTO(entity.getCliente()));
+        if(entity.getCliente() != null){
+            dto.setCliente(clienteBO.parseToDTO(entity.getCliente()));
+        }
+        if(entity.getRecarga() != null){
+            dto.setRecarga(recargaBO.parseToDTO(entity.getRecarga()));
+        }
         dto.setDataAbertura(entity.getDataAbertura());
         dto.setDataFechamento(entity.getDataFechamento());
         dto.setFlagNota(entity.getFlagNota());
@@ -59,42 +63,6 @@ public class DocumentoFiscalBO {
         return dto;
     }
 
-    public DocumentoFiscalDTO parseToDTOVenda (DocumentoFiscalEntity entity){
-        DocumentoFiscalDTO dto = new DocumentoFiscalDTO();
-
-        if(entity == null)
-            return dto;
-
-        dto.setIdDocumentoFiscal(entity.getIdDocumentoFiscal());
-        dto.setFilial(filialBO.parseToDTO(entity.getFilial()));
-        dto.setNumeroCaixa(entity.getNumeroCaixa());
-
-
-        if(entity.getCliente() != null)
-            dto.setCliente(clienteBO.parseToDTO(entity.getCliente()));
-
-        dto.setFlagNota(entity.getFlagNota());
-
-        dto.setValorDocumento(entity.getValorDocumento());
-
-        return dto;
-    }
-
-    public DocumentoFiscalDTO parseToDTORecarga (DocumentoFiscalEntity entity){
-        DocumentoFiscalDTO dto = new DocumentoFiscalDTO();
-
-        if(entity == null)
-            return dto;
-
-        dto.setIdDocumentoFiscal(entity.getIdDocumentoFiscal());
-        dto.setFilial(filialBO.parseToDTO(entity.getFilial()));
-        dto.setNumeroCaixa(entity.getNumeroCaixa());
-        dto.setValorDocumento(entity.getValorDocumento());
-        dto.setRecarga(recargaBO.parseToDTO(entity.getRecarga()));
-        dto.setFlagNota(entity.getFlagNota());
-
-        return dto;
-    }
 
 
     public DocumentoFiscalEntity parseToEntity(DocumentoFiscalEntity entity, DocumentoFiscalDTO dto){

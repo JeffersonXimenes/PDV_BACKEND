@@ -31,10 +31,6 @@ public class DocumentoFiscalController {
     public ResponseEntity<Object> inserirDocumentoVenda(@RequestBody DocumentoFiscalDTO dto) {
         ResultData resultData = null;
 
-        for (DocumentoItemDTO docDto: dto.getItens()) {
-            documentoItemService.inserirItem(docDto);
-        }
-
         if(dto.getFilial() == null)
             resultData = new ResultData(HttpStatus.BAD_REQUEST.value(),"Campo: cdFilial não informado!");
 
