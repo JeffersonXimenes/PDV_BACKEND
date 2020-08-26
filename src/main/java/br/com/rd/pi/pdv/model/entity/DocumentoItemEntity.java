@@ -28,7 +28,7 @@ public class DocumentoItemEntity implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "CD_PRODUTO")
-    private ProdutoEntity cdProduto;
+    private ProdutoEntity produto;
 
     @Column (name = "QT_ITEM")
     private Long qtdItem;

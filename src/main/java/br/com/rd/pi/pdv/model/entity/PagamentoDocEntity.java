@@ -1,6 +1,5 @@
 package br.com.rd.pi.pdv.model.entity;
 
-import br.com.rd.pi.pdv.model.dto.PagamentoDocDTO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -29,8 +28,5 @@ public class PagamentoDocEntity implements Serializable {
     @ManyToOne
     @JoinColumn(name = "ID_TIPO_PAGAMENTO")
     private TipoPagamentoEntity tipoPagamento;
-
-
-
 
 }

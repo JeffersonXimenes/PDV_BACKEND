@@ -5,6 +5,7 @@ import br.com.rd.pi.pdv.model.dto.DocumentoItemDTO;
 import br.com.rd.pi.pdv.model.dto.ResultData;
 import br.com.rd.pi.pdv.service.DocumentoFiscalService;
 import br.com.rd.pi.pdv.service.DocumentoItemService;
+import br.com.rd.pi.pdv.service.RecargaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +23,11 @@ public class DocumentoFiscalController {
     @Autowired
     private DocumentoItemService documentoItemService;
 
+    @Autowired
+    private RecargaService recargaService;
+
+
+
 
     @PostMapping("/pdv/docVenda")
     public ResponseEntity<Object> inserirDocumentoVenda(@RequestBody DocumentoFiscalDTO dto) {
@@ -31,7 +37,7 @@ public class DocumentoFiscalController {
             documentoItemService.inserirItem(docDto);
         }
 
-        if(dto.getCdFilial() == null)
+        if(dto.getFilial() == null)
             resultData = new ResultData(HttpStatus.BAD_REQUEST.value(),"Campo: cdFilial não informado!");
 
         if(resultData != null)
@@ -39,6 +45,7 @@ public class DocumentoFiscalController {
 
         else {
             try {
+                recargaService.inserir(dto.getRecarga());
                 documentoFiscalService.inserirVendaNormal(dto);
                 return ResponseEntity.ok().body(dto);
             } catch (Exception e) {
@@ -52,7 +59,7 @@ public class DocumentoFiscalController {
     public ResponseEntity<Object> inserirDocumentoRecarga(@RequestBody DocumentoFiscalDTO dto) {
         ResultData resultData = null;
 
-        if(dto.getCdFilial() == null)
+        if(dto.getFilial() == null)
             resultData = new ResultData(HttpStatus.BAD_REQUEST.value(),"Campo: cdFilial não informado!");
 
         if(resultData != null)
@@ -60,7 +67,6 @@ public class DocumentoFiscalController {
 
         else {
             try {
-
                 documentoFiscalService.inserirVendaRecarga(dto);
                 return ResponseEntity.ok().body(dto);
             } catch (Exception e) {

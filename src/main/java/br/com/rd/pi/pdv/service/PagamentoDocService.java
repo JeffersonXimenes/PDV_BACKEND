@@ -31,10 +31,6 @@ public class PagamentoDocService {
     }
 
     public void inserir(PagamentoDocDTO pagamentoDTO){
-        PagamentoDocEntity pagamentoDocEntity = pagamentoDocBO.parseToEntity(pagamentoDTO, null);
-        repository.save(pagamentoDocEntity);
-
-
 
     }
 

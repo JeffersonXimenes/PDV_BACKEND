@@ -12,6 +12,9 @@ public class OperacaoBO {
     @Autowired
     private TipoOperacaoRepository tipoOpRepository;
 
+    @Autowired
+    private TipoOperacaoBO tipoOperacaoBO;
+
     public OperacaoDTO parseToDTO(OperacaoEntity entity){
         OperacaoDTO dto = new OperacaoDTO();
 
@@ -19,7 +22,7 @@ public class OperacaoBO {
             return dto;
 
         dto.setCdOperacao(entity.getCdOperacao());
-        dto.setTipoOperacao(entity.getTipoOperacao().getIdTipoOperacao());
+        dto.setTipoOperacao(tipoOperacaoBO.parseToDTO(entity.getTipoOperacao()));
         dto.setDescricaoOperacao(entity.getDescricaoOperacao());
 
         return dto;
@@ -33,7 +36,7 @@ public class OperacaoBO {
             return entity;
 
         entity.setCdOperacao(dto.getCdOperacao());
-        entity.setTipoOperacao(tipoOpRepository.getOne(dto.getTipoOperacao()));
+        entity.setTipoOperacao(tipoOpRepository.getOne(dto.getTipoOperacao().getIdTipoOperacao()));
         entity.setDescricaoOperacao(dto.getDescricaoOperacao());
 
         return entity;

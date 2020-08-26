@@ -1,15 +1,13 @@
 package br.com.rd.pi.pdv.controller;
 
-import br.com.rd.pi.pdv.model.dto.PagamentoDocDTO;
 import br.com.rd.pi.pdv.service.PagamentoDocService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
-import java.sql.PreparedStatement;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class zPagamentoDocController {
+public class PagamentoDocController {
 
     @Autowired
     private PagamentoDocService service;
@@ -19,14 +17,5 @@ public class zPagamentoDocController {
         return ResponseEntity.ok().body(service.buscarTodosPagamentos());
     }
 
-    @PostMapping("/pdv/pagamentoDoc")
-    public ResponseEntity<Object> insercaoPagamento(@RequestBody PagamentoDocDTO dto) {
-        service.inserir(dto);
-        return ResponseEntity.ok().body(dto);
-
-
-
-
-    }
 
 }

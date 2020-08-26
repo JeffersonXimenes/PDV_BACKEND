@@ -8,8 +8,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class PagamentoDocDTO {
+
     private Long idPagamento;
-    private Long idDocumentoFiscal;
+    private DocumentoFiscalDTO documentoFiscal;
     private Double vlPagamento;
     private Long idTipoPagamento;
 

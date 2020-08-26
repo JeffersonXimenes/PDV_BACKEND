@@ -55,7 +55,6 @@ public class RecargaService {
 //
 //        }
 //
-//
 //        return listDTO;
 //    }
 
@@ -82,7 +81,7 @@ public class RecargaService {
 
     public void inserir (RecargaDTO dto){
         RecargaEntity entity = bo.parseToEntity(dto, null);
-        if(entity.getNumeroTelefone() != null)
+        if(entity.getIdRecarga() != null)
             recargaRepository.save(entity);
     }
 

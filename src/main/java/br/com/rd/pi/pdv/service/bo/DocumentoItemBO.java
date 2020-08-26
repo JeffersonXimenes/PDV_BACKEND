@@ -16,6 +16,9 @@ public class DocumentoItemBO {
     @Autowired
     private ProdutoRepository produtoRepository;
 
+    @Autowired
+    private ProdutoBO produtoBO;
+
     public DocumentoItemDTO parseToDTO(DocumentoItemEntity entity){
         DocumentoItemDTO dto = new DocumentoItemDTO();
 
@@ -24,7 +27,7 @@ public class DocumentoItemBO {
 
         dto.setDocumentoFiscal(entity.getDocumentoFiscal().getIdDocumentoFiscal());
         dto.setNumItemDoc(entity.getNumItemDoc());
-        dto.setCdProduto(entity.getCdProduto().getCdProduto());
+        dto.setProduto(produtoBO.parseToDTO(entity.getProduto()));
         dto.setQtdItem(entity.getQtdItem());
         dto.setValorItem(entity.getValorItem());
         dto.setPorcentoIcms(entity.getPorcentoIcms());
@@ -42,7 +45,7 @@ public class DocumentoItemBO {
 
         entity.setDocumentoFiscal(docFiscalRepository.getOne(dto.getDocumentoFiscal()));
         entity.setNumItemDoc(dto.getNumItemDoc());
-        entity.setCdProduto(produtoRepository.getOne(dto.getCdProduto()));
+        entity.setProduto(produtoRepository.getOne(dto.getProduto().getCdProduto()));
         entity.setQtdItem(dto.getQtdItem());
         entity.setValorItem(dto.getValorItem());
         entity.setPorcentoIcms(dto.getPorcentoIcms());
