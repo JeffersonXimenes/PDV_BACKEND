@@ -16,12 +16,12 @@ public class RecargaController {
     @Autowired
     private DocumentoFiscalService documentoFiscalService;
 
-    @GetMapping("/Recarga")
+    @GetMapping("/recarga")
     public ResponseEntity buscarTodas(){
         return ResponseEntity.ok().body(service.buscarTodas());
     }
 
-    @PostMapping("/pdv/Recarga")
+    @PostMapping("/pdv/recarga")
     public ResponseEntity inserir(@RequestBody RecargaDTO dto){
         service.inserir(dto);
         return ResponseEntity.ok().body(dto);

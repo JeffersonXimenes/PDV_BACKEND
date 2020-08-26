@@ -9,6 +9,6 @@ import java.util.List;
 
 @Repository
 public interface PagamentoDocRepository extends JpaRepository<PagamentoDocEntity, Long> {
-    List<PagamentoDocEntity>FindByTipoPagamento(TipoPagamentoEntity tipoPagamento);
+    //List<PagamentoDocEntity>FindByTipoPagamento(TipoPagamentoEntity tipoPagamento);
 
 }

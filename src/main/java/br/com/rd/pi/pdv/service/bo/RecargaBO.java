@@ -21,7 +21,7 @@ public class RecargaBO {
 
         if(entity == null )
             return dto;
-        dto.setIdRecarga(entity.getIdRecarga());
+        //dto.setIdRecarga(entity.getIdRecarga());
         dto.setNumeroTelefone(entity.getNumeroTelefone());
         dto.setIdOperadora(entity.getOperadora().getIdOperadora());
         //dto.setIdTipoPagamento(entity.getTipoPagamento().getIdTipoPagamento());
@@ -39,11 +39,9 @@ public class RecargaBO {
 
         if(dto == null)
             return entity;
-        entity.setIdRecarga(dto.getIdRecarga());
+        //entity.setIdRecarga(dto.getIdRecarga());
         entity.setNumeroTelefone(dto.getNumeroTelefone());
-
         entity.setOperadora(operadoraRepository.getOne(dto.getIdOperadora()));
-
         entity.setValorRecarga(dto.getValorRecarga());
 
         return entity;

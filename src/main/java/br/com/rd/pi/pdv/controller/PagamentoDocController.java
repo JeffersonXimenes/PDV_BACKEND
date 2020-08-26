@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.sql.PreparedStatement;
 
 @RestController
-public class PagamentoDocController {
+public class zPagamentoDocController {
 
     @Autowired
     private PagamentoDocService service;

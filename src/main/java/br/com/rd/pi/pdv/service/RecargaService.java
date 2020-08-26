@@ -82,7 +82,7 @@ public class RecargaService {
 
     public void inserir (RecargaDTO dto){
         RecargaEntity entity = bo.parseToEntity(dto, null);
-        if(entity.getIdRecarga() != null)
+        if(entity.getNumeroTelefone() != null)
             recargaRepository.save(entity);
     }
 

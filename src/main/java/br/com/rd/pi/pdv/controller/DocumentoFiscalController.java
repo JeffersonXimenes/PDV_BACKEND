@@ -60,6 +60,7 @@ public class DocumentoFiscalController {
 
         else {
             try {
+
                 documentoFiscalService.inserirVendaRecarga(dto);
                 return ResponseEntity.ok().body(dto);
             } catch (Exception e) {
