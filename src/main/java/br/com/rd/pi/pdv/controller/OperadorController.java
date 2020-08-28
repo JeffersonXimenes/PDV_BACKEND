@@ -1,6 +1,5 @@
 package br.com.rd.pi.pdv.controller;
 
-import br.com.rd.pi.pdv.service.ClienteService;
 import br.com.rd.pi.pdv.service.OperadorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

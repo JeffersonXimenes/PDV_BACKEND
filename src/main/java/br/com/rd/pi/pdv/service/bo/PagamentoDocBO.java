@@ -3,6 +3,7 @@ package br.com.rd.pi.pdv.service.bo;
 import br.com.rd.pi.pdv.model.dto.PagamentoDocDTO;
 import br.com.rd.pi.pdv.model.entity.DocumentoFiscalEntity;
 import br.com.rd.pi.pdv.model.entity.PagamentoDocEntity;
+import br.com.rd.pi.pdv.repository.DocumentoFiscalRepository;
 import br.com.rd.pi.pdv.repository.TipoPagamentoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -15,6 +16,9 @@ public class PagamentoDocBO {
 
     @Autowired
     private DocumentoFiscalBO documentoFiscalBO;
+
+    @Autowired
+    private DocumentoFiscalRepository documentoFiscalRepository;
 
 
     public PagamentoDocDTO parseToDTO(PagamentoDocEntity entity) {
@@ -40,7 +44,7 @@ public class PagamentoDocBO {
         if (dto == null) {
             return entity;
         }
-        entity.setDocumentoFiscal(documentoFiscalBO.parseToEntity(null, dto.getDocumentoFiscal()));
+        entity.setDocumentoFiscal(documentoFiscalRepository.getOne(dto.getDocumentoFiscal().getIdDocumentoFiscal()));
         entity.setIdPagamento(dto.getIdPagamento());
         entity.setVlPagamento(dto.getVlPagamento());
         entity.setTipoPagamento(tipoPagamentoRepository.getOne(dto.getIdTipoPagamento()));
