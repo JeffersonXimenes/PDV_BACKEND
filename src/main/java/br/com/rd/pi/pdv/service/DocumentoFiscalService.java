@@ -4,10 +4,7 @@ import br.com.rd.pi.pdv.model.dto.DocumentoFiscalDTO;
 import br.com.rd.pi.pdv.model.dto.DocumentoItemDTO;
 import br.com.rd.pi.pdv.model.entity.*;
 import br.com.rd.pi.pdv.repository.*;
-import br.com.rd.pi.pdv.service.bo.ClienteBO;
-import br.com.rd.pi.pdv.service.bo.DocumentoFiscalBO;
-import br.com.rd.pi.pdv.service.bo.FilialBO;
-import br.com.rd.pi.pdv.service.bo.RecargaBO;
+import br.com.rd.pi.pdv.service.bo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -49,6 +46,9 @@ public class DocumentoFiscalService {
     @Autowired
     private ClienteBO clienteBO;
 
+    @Autowired
+    private OperacaoBO operacaoBO;
+
     @PersistenceContext
     private EntityManager em;
 
@@ -67,14 +67,20 @@ public class DocumentoFiscalService {
         return listaDocumento;
     }
 
+    public DocumentoFiscalDTO buscarDocId (Long idDocFiscal){
+        return documentoFiscalBO.parseToDTO(repository.getOne(idDocFiscal));
+    }
+
     public void inserirVendaNormal(DocumentoFiscalDTO dto){
         ClienteEntity cliente = clienteBO.parseToEntity(dto.getCliente(),null); // pegando o cliente do dto recebido do front
         FilialEntity filial = filialBO.parseToEntity(dto.getFilial(),null); // msm coisa so que com a filial
+        OperacaoEntity operacao = operacaoBO.parseToEntity(dto.getOperacao(),null);
 
         DocumentoFiscalEntity docEntity= new DocumentoFiscalEntity();
 
         docEntity.setCliente(cliente);
         docEntity.setFilial(filial);
+        docEntity.setOperacao(operacao);
 
         docEntity.setValorDocumento(dto.getValorDocumento());
         docEntity.setFlagNota(dto.getFlagNota());
@@ -93,31 +99,27 @@ public class DocumentoFiscalService {
             itemEntity.setDocumentoFiscal(docEntity);
             itemsEntity.add(itemEntity);
         }
-
         docEntity.setItens(itemsEntity);
 
-
-
         repository.save(docEntity);
-
 
     }
 
     public void inserirVendaRecarga(DocumentoFiscalDTO dto){
         FilialEntity filial = filialBO.parseToEntity(dto.getFilial(),null);
         RecargaEntity recarga = recargaBO.parseToEntity(dto.getRecarga(),null);
+        OperacaoEntity operacao = operacaoBO.parseToEntity(dto.getOperacao(),null);
 
         DocumentoFiscalEntity docEntity= new DocumentoFiscalEntity();
 
         docEntity.setRecarga(recarga);
         docEntity.setFilial(filial);
+        docEntity.setOperacao(operacao);
 
         docEntity.setValorDocumento(dto.getValorDocumento());
         docEntity.setFlagNota(dto.getFlagNota());
         docEntity.setNumeroCaixa(dto.getNumeroCaixa());
 
-
         repository.save(docEntity);
-
     }
 }

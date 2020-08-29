@@ -36,7 +36,7 @@ public class OperacaoBO {
             return entity;
 
         entity.setCdOperacao(dto.getCdOperacao());
-        entity.setTipoOperacao(tipoOpRepository.getOne(dto.getTipoOperacao().getIdTipoOperacao()));
+        //entity.setTipoOperacao(tipoOpRepository.getOne(dto.getTipoOperacao().getIdTipoOperacao()));
         entity.setDescricaoOperacao(dto.getDescricaoOperacao());
 
         return entity;

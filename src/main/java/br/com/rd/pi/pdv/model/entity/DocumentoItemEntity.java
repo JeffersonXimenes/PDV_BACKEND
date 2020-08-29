@@ -9,7 +9,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "TB_DOCUMENTO_FISCAL_ITEM")
+@Table(name = "TB_DOCUMENTO_ITEM")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -17,7 +17,7 @@ import java.io.Serializable;
 public class DocumentoItemEntity implements Serializable {
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "ID_DOCUMENTO")
+    @JoinColumn(name = "ID_DOCUMENTO_FISCAL")
     @JsonIgnore
     @Id
     private DocumentoFiscalEntity documentoFiscal;

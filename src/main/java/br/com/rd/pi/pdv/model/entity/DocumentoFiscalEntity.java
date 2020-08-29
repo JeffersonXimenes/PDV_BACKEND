@@ -19,7 +19,7 @@ import java.util.List;
 public class DocumentoFiscalEntity implements Serializable {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID_DOCUMENTO_FISCAL")
     private Long idDocumentoFiscal;
 
@@ -35,7 +35,7 @@ public class DocumentoFiscalEntity implements Serializable {
     @JoinColumn(name = "ID_CLIENTE")
     private ClienteEntity cliente;
 
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.PERSIST)
     @JoinColumn(name = "ID_RECARGA")
     private RecargaEntity recarga;
 

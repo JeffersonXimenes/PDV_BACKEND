@@ -6,6 +6,7 @@ import br.com.rd.pi.pdv.model.dto.DocumentoFiscalDTO;
 import br.com.rd.pi.pdv.model.entity.DocumentoItemEntity;
 import br.com.rd.pi.pdv.repository.ClienteRepository;
 import br.com.rd.pi.pdv.repository.FilialRepository;
+import br.com.rd.pi.pdv.repository.OperacaoRepository;
 import br.com.rd.pi.pdv.repository.RecargaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -36,6 +37,12 @@ public class DocumentoFiscalBO {
 
     @Autowired
     private RecargaBO recargaBO;
+
+    @Autowired
+    private OperacaoRepository operacaoRepository;
+
+    @Autowired
+    private OperacaoBO operacaoBO;
 
     public DocumentoFiscalDTO parseToDTO(DocumentoFiscalEntity entity){
         DocumentoFiscalDTO dto = new DocumentoFiscalDTO();
@@ -74,8 +81,11 @@ public class DocumentoFiscalBO {
 
         entity.setIdDocumentoFiscal(dto.getIdDocumentoFiscal());
         entity.setFilial(filialRepository.getOne(dto.getFilial().getCdFilial()));
+        entity.setOperacao(operacaoRepository.getOne(dto.getOperacao().getCdOperacao()));
+
         entity.setCliente(clienteRepository.getOne(dto.getCliente().getIdCliente()));
         entity.setRecarga(recargaRepository.getOne(dto.getRecarga().getIdRecarga()));
+
         entity.setDataAbertura(dto.getDataAbertura());
         entity.setDataFechamento(dto.getDataFechamento());
         entity.setFlagNota(dto.getFlagNota());

@@ -61,7 +61,6 @@ public class DocumentoFiscalController {
 
         else {
             try {
-                recargaService.inserir(dto.getRecarga());
                 documentoFiscalService.inserirVendaRecarga(dto);
                 return ResponseEntity.ok().body(dto);
             } catch (Exception e) {
