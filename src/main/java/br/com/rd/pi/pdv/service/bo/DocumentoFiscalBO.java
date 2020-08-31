@@ -91,7 +91,6 @@ public class DocumentoFiscalBO {
         entity.setFlagNota(dto.getFlagNota());
         entity.setValorDocumento(dto.getValorDocumento());
         entity.setNumeroCaixa(dto.getNumeroCaixa());
-
         List <DocumentoItemEntity> entidadeItem  = new ArrayList <>();
 
         for (DocumentoItemDTO itemDTO: dto.getItens()) {
