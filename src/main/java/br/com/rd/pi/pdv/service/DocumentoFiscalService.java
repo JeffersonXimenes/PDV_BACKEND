@@ -72,13 +72,16 @@ public class DocumentoFiscalService {
     }
 
     public void inserirVendaNormal(DocumentoFiscalDTO dto){
-        ClienteEntity cliente = clienteBO.parseToEntity(dto.getCliente(),null); // pegando o cliente do dto recebido do front
-        FilialEntity filial = filialBO.parseToEntity(dto.getFilial(),null); // msm coisa so que com a filial
-        OperacaoEntity operacao = operacaoBO.parseToEntity(dto.getOperacao(),null);
-
         DocumentoFiscalEntity docEntity= new DocumentoFiscalEntity();
 
-        docEntity.setCliente(cliente);
+        if (dto.getCliente().getIdCliente() != null){
+            ClienteEntity cliente = clienteRepository.getOne(dto.getCliente().getIdCliente()); // pegando o cliente do dto recebido do front
+            docEntity.setCliente(cliente);
+        }
+
+        FilialEntity filial = filialRepository.getOne(dto.getFilial().getCdFilial()); // msm coisa so que com a filial
+        OperacaoEntity operacao = operacaoRepository.getOne(dto.getOperacao().getCdOperacao());
+
         docEntity.setFilial(filial);
         docEntity.setOperacao(operacao);
 
@@ -92,6 +95,7 @@ public class DocumentoFiscalService {
 
             DocumentoItemEntity itemEntity = new DocumentoItemEntity();
 
+            itemEntity.setQtdItem(itemDTO.getQtdItem());
             itemEntity.setNumItemDoc(itemDTO.getNumItemDoc());
             itemEntity.setProduto(produtoRepository.getOne(itemDTO.getProduto().getCdProduto()));
             itemEntity.setValorItem(itemDTO.getValorItem());
@@ -106,9 +110,10 @@ public class DocumentoFiscalService {
     }
 
     public void inserirVendaRecarga(DocumentoFiscalDTO dto){
-        FilialEntity filial = filialBO.parseToEntity(dto.getFilial(),null);
+
+        FilialEntity filial = filialRepository.getOne(dto.getFilial().getCdFilial());
+        OperacaoEntity operacao = operacaoRepository.getOne(dto.getOperacao().getCdOperacao());
         RecargaEntity recarga = recargaBO.parseToEntity(dto.getRecarga(),null);
-        OperacaoEntity operacao = operacaoBO.parseToEntity(dto.getOperacao(),null);
 
         DocumentoFiscalEntity docEntity= new DocumentoFiscalEntity();
 

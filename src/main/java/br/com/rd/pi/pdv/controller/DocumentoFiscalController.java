@@ -39,7 +39,6 @@ public class DocumentoFiscalController {
 
         else {
             try {
-
                 documentoFiscalService.inserirVendaNormal(dto);
                 return ResponseEntity.ok().body(dto);
             } catch (Exception e) {
