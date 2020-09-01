@@ -94,7 +94,6 @@ public class DocumentoFiscalService {
         for(DocumentoItemDTO itemDTO : dto.getItens()){
 
             DocumentoItemEntity itemEntity = new DocumentoItemEntity();
-
             itemEntity.setQtdItem(itemDTO.getQtdItem());
             itemEntity.setNumItemDoc(itemDTO.getNumItemDoc());
             itemEntity.setProduto(produtoRepository.getOne(itemDTO.getProduto().getCdProduto()));
