@@ -1,5 +1,6 @@
 package br.com.rd.pi.pdv.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,7 +20,9 @@ public class PagamentoDocEntity implements Serializable {
     @Column(name = "ID_PAGAMENTO")
     private Long idPagamento;
 
-    @Column(name = "ID_DOCUMENTO_FISCAL")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "ID_DOCUMENTO_FISCAL")
+    @JsonIgnore
     private DocumentoFiscalEntity documentoFiscal;
 
     @Column(name = "VL_PAGAMENTO")

@@ -57,4 +57,6 @@ public class DocumentoFiscalEntity implements Serializable {
     @OneToMany (mappedBy = "documentoFiscal",cascade = CascadeType.ALL)
     private List<DocumentoItemEntity> itens;
 
+    @OneToMany (mappedBy = "documentoFiscal",cascade = CascadeType.ALL)
+    private List<PagamentoDocEntity> pagamentos;
 }
