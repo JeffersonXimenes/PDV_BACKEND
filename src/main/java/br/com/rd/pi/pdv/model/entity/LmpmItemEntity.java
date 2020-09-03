@@ -1,6 +1,7 @@
 package br.com.rd.pi.pdv.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -9,6 +10,7 @@ import java.io.Serializable;
 @Entity
 @Table(name = "TB_LMPM_ITEM")
 @Data
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class LmpmItemEntity implements Serializable {
 
     @Id
@@ -20,7 +22,6 @@ public class LmpmItemEntity implements Serializable {
     @JoinColumn(name = "ID_LMPM")
     private LmpmEntity lmpm;
 
-    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "CD_PRODUTO")
     private ProdutoEntity produto;

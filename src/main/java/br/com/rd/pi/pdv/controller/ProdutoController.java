@@ -18,4 +18,13 @@ public class ProdutoController {
         return ResponseEntity.ok().body(service.buscarProdutoId(codigo));
     }
 
+    @GetMapping("/produto/{codigo}")
+    public ResponseEntity buscarProdutoLmpm(@PathVariable("codigo") Long codigo){
+
+        if (service.buscarProdutoLmpmId(codigo) != null)
+            return ResponseEntity.ok().body(service.buscarProdutoLmpmId(codigo));
+        else
+            return ResponseEntity.ok().body(service.buscarProdutoId(codigo));
+    }
+
 }

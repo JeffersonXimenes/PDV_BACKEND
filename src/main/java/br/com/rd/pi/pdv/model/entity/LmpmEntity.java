@@ -1,5 +1,6 @@
 package br.com.rd.pi.pdv.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -9,6 +10,7 @@ import java.util.Date;
 @Entity
 @Table(name = "TB_LMPM")
 @Data
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class LmpmEntity implements Serializable {
 
     @Id

@@ -3,6 +3,7 @@ package br.com.rd.pi.pdv.service;
 import br.com.rd.pi.pdv.model.entity.LmpmItemEntity;
 import br.com.rd.pi.pdv.model.entity.ProdutoEntity;
 import br.com.rd.pi.pdv.repository.LmpmItemRepository;
+import br.com.rd.pi.pdv.repository.LmpmRepository;
 import br.com.rd.pi.pdv.repository.ProdutoRepository;
 import br.com.rd.pi.pdv.service.bo.LmpmItemBO;
 import br.com.rd.pi.pdv.service.bo.ProdutoBO;
@@ -19,6 +20,9 @@ public class ProdutoService {
     private LmpmItemRepository lmpmItemRepository;
 
     @Autowired
+    private LmpmRepository lmpmRepository;
+
+    @Autowired
     private ProdutoBO produtoBO;
 
     @Autowired
@@ -29,9 +33,9 @@ public class ProdutoService {
         return repository.getOne(codigo);
     }
 
-//    public LmpmItemEntity buscarProdutoLmpmId (Long codigo){
-//
-//        return
-//    }
+    public LmpmItemEntity buscarProdutoLmpmId (Long codigoProduto){
+        return lmpmItemRepository.findByProdutoAndLmpm(repository.getOne(codigoProduto),lmpmRepository.getOne(codigoProduto));
+    }
+
 
 }
