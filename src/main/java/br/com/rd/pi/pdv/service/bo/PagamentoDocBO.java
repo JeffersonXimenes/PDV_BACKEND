@@ -47,10 +47,9 @@ public class PagamentoDocBO {
         if (dto == null) {
             return entity;
         }
-        entity.setDocumentoFiscal(documentoFiscalRepository.getOne(dto.getDocumentoFiscal().getIdDocumentoFiscal()));
-        entity.setIdPagamento(dto.getIdPagamento());
         entity.setVlPagamento(dto.getVlPagamento());
         entity.setTipoPagamento(tipoPagamentoRepository.getOne(dto.getTipoPagamento().getIdTipoPagamento()));
+
 
         return entity;
     }

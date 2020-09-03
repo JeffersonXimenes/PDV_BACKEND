@@ -39,6 +39,9 @@ public class DocumentoFiscalService {
     private DocumentoFiscalBO documentoFiscalBO;
 
     @Autowired
+    private DocumentoItemBO documentoItemBO;
+
+    @Autowired
     private RecargaBO recargaBO;
 
     @Autowired
@@ -49,6 +52,9 @@ public class DocumentoFiscalService {
 
     @Autowired
     private OperacaoBO operacaoBO;
+
+    @Autowired
+    private PagamentoDocBO pagamentoDocBO;
 
     @Autowired
     private TipoPagamentoRepository tipoPagamentoRepository;
@@ -97,17 +103,13 @@ public class DocumentoFiscalService {
 
         for(DocumentoItemDTO itemDTO : dto.getItens()){
 
-            DocumentoItemEntity itemEntity = new DocumentoItemEntity();
-            itemEntity.setQtdItem(itemDTO.getQtdItem());
-            itemEntity.setNumItemDoc(itemDTO.getNumItemDoc());
-            itemEntity.setProduto(produtoRepository.getOne(itemDTO.getProduto().getCdProduto()));
-            itemEntity.setValorItem(itemDTO.getValorItem());
-
+            DocumentoItemEntity itemEntity = documentoItemBO.parseToEntity(itemDTO,null);
             itemEntity.setDocumentoFiscal(docEntity);
+
             itemsEntity.add(itemEntity);
+
         }
         docEntity.setItens(itemsEntity);
-
 
         docEntity.setPagamentos((pagamentos(dto.getPagamentos(), docEntity)));
 
@@ -142,10 +144,7 @@ public class DocumentoFiscalService {
 
         for(PagamentoDocDTO pagamentoDocDTO : pagamentosDTOS){
 
-            PagamentoDocEntity pagamentoDocEntity = new PagamentoDocEntity();
-            pagamentoDocEntity.setVlPagamento(pagamentoDocDTO.getVlPagamento());
-            pagamentoDocEntity.setTipoPagamento(tipoPagamentoRepository.getOne(pagamentoDocDTO.getTipoPagamento().getIdTipoPagamento()));
-
+            PagamentoDocEntity pagamentoDocEntity = pagamentoDocBO.parseToEntity(pagamentoDocDTO,null);
             pagamentoDocEntity.setDocumentoFiscal(docEntity);
             pagamentosEntities.add(pagamentoDocEntity);
         }

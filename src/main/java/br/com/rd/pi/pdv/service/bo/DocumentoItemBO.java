@@ -43,13 +43,10 @@ public class DocumentoItemBO {
         if (dto == null)
             return entity;
 
-        entity.setDocumentoFiscal(docFiscalRepository.getOne(dto.getDocumentoFiscal()));
+        entity.setQtdItem(dto.getQtdItem());
         entity.setNumItemDoc(dto.getNumItemDoc());
         entity.setProduto(produtoRepository.getOne(dto.getProduto().getCdProduto()));
-        entity.setQtdItem(dto.getQtdItem());
         entity.setValorItem(dto.getValorItem());
-        entity.setPorcentoIcms(dto.getPorcentoIcms());
-        entity.setValorIcms(dto.getValorIcms());
 
         return entity;
     }
