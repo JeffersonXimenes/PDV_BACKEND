@@ -79,12 +79,6 @@ public class DocumentoFiscalBO {
         if(dto == null)
             return entity;
 
-        entity.setIdDocumentoFiscal(dto.getIdDocumentoFiscal());
-        entity.setFilial(filialRepository.getOne(dto.getFilial().getCdFilial()));
-        entity.setOperacao(operacaoRepository.getOne(dto.getOperacao().getCdOperacao()));
-
-        entity.setCliente(clienteRepository.getOne(dto.getCliente().getIdCliente()));
-        entity.setRecarga(recargaRepository.getOne(dto.getRecarga().getIdRecarga()));
 
         entity.setDataAbertura(dto.getDataAbertura());
         entity.setDataFechamento(dto.getDataFechamento());

@@ -59,11 +59,11 @@ public class DocumentoFiscalService {
     @Autowired
     private TipoPagamentoRepository tipoPagamentoRepository;
 
+    @Autowired
+    private EstoqueService estoqueService;
+
     @PersistenceContext
     private EntityManager em;
-
-    @Autowired
-    private RecargaService recargaService;
 
     public List<DocumentoFiscalDTO> buscarTodosDoc(){
 
@@ -82,7 +82,7 @@ public class DocumentoFiscalService {
     }
 
     public void inserirVendaNormal(DocumentoFiscalDTO dto){
-        DocumentoFiscalEntity docEntity= new DocumentoFiscalEntity();
+        DocumentoFiscalEntity docEntity = documentoFiscalBO.parseToEntity(null, dto);
 
         if (dto.getCliente().getIdCliente() != null){
             ClienteEntity cliente = clienteRepository.getOne(dto.getCliente().getIdCliente()); // pegando o cliente do dto recebido do front
@@ -94,10 +94,6 @@ public class DocumentoFiscalService {
 
         docEntity.setFilial(filial);
         docEntity.setOperacao(operacao);
-
-        docEntity.setValorDocumento(dto.getValorDocumento());
-        docEntity.setFlagNota(dto.getFlagNota());
-        docEntity.setNumeroCaixa(dto.getNumeroCaixa());
 
         List<DocumentoItemEntity> itemsEntity = new ArrayList<>();
 
@@ -115,6 +111,7 @@ public class DocumentoFiscalService {
 
         repository.save(docEntity);
 
+        estoqueService.atualizaEstoqueVenda(dto);
     }
 
     public void inserirVendaRecarga(DocumentoFiscalDTO dto){
@@ -123,15 +120,11 @@ public class DocumentoFiscalService {
         OperacaoEntity operacao = operacaoRepository.getOne(dto.getOperacao().getCdOperacao());
         RecargaEntity recarga = recargaBO.parseToEntity(dto.getRecarga(),null);
 
-        DocumentoFiscalEntity docEntity= new DocumentoFiscalEntity();
+        DocumentoFiscalEntity docEntity= documentoFiscalBO.parseToEntity(null, dto);
 
         docEntity.setRecarga(recarga);
         docEntity.setFilial(filial);
         docEntity.setOperacao(operacao);
-
-        docEntity.setValorDocumento(dto.getValorDocumento());
-        docEntity.setFlagNota(dto.getFlagNota());
-        docEntity.setNumeroCaixa(dto.getNumeroCaixa());
 
         docEntity.setPagamentos((pagamentos(dto.getPagamentos(), docEntity)));
 
@@ -150,6 +143,21 @@ public class DocumentoFiscalService {
         }
 
         return pagamentosEntities;
+    }
+
+    // INSERI ISSO AQUI
+    public void inserirDataAbertura (DocumentoFiscalDTO dto) {
+        FilialEntity filial = filialBO.parseToEntity(dto.getFilial(),null);
+        OperacaoEntity operacao = operacaoBO.parseToEntity(dto.getOperacao(),null);
+        DocumentoFiscalEntity dataAbertura = new DocumentoFiscalEntity();
+
+        java.util.Date data = new java.util.Date();
+        java.sql.Date dataSql = new java.sql.Date(data.getTime());
+
+        dataAbertura.setFilial(filial);
+        dataAbertura.setOperacao(operacao);
+        dataAbertura.setDataAbertura(dataSql);
+        repository.save(dataAbertura);
     }
 
 }
