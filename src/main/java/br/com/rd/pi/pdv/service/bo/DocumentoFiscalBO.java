@@ -86,12 +86,13 @@ public class DocumentoFiscalBO {
         entity.setValorDocumento(dto.getValorDocumento());
         entity.setNumeroCaixa(dto.getNumeroCaixa());
 
-        List <DocumentoItemEntity> entidadeItem  = new ArrayList <>();
-        for (DocumentoItemDTO itemDTO: dto.getItens()) {
-            entidadeItem.add(documentoItemBO.parseToEntity(itemDTO,null));
+        if (dto.getItens() != null) {
+            List<DocumentoItemEntity> entidadeItem = new ArrayList<>();
+            for (DocumentoItemDTO itemDTO : dto.getItens()) {
+                entidadeItem.add(documentoItemBO.parseToEntity(itemDTO, null));
+            }
+            entity.setItens(entidadeItem);
         }
-        entity.setItens(entidadeItem);
-
         return entity;
     }
 }
