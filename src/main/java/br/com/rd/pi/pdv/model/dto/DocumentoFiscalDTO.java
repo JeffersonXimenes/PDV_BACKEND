@@ -34,6 +34,8 @@ public class DocumentoFiscalDTO {
 
     private Integer numeroCaixa;
 
+    private Long numeroNota;
+
     private List<DocumentoItemDTO> itens;
 
     private List<PagamentoDocDTO> pagamentos;

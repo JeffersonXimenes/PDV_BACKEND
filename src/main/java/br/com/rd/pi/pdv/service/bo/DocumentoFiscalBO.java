@@ -66,6 +66,7 @@ public class DocumentoFiscalBO {
         dto.setFlagNota(entity.getFlagNota());
         dto.setValorDocumento(entity.getValorDocumento());
         dto.setNumeroCaixa(entity.getNumeroCaixa());
+        dto.setNumeroNota(entity.getNumeroNota());
 
         return dto;
     }
@@ -79,12 +80,12 @@ public class DocumentoFiscalBO {
         if(dto == null)
             return entity;
 
-
         entity.setDataAbertura(dto.getDataAbertura());
         entity.setDataFechamento(dto.getDataFechamento());
         entity.setFlagNota(dto.getFlagNota());
         entity.setValorDocumento(dto.getValorDocumento());
         entity.setNumeroCaixa(dto.getNumeroCaixa());
+        entity.setNumeroNota(dto.getNumeroNota());
 
         if (dto.getItens() != null) {
             List<DocumentoItemEntity> entidadeItem = new ArrayList<>();
