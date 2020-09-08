@@ -59,6 +59,7 @@ public class DocumentoFiscalService {
     @Autowired
     private PagamentoDocBO pagamentoDocBO;
 
+
     @Autowired
     private TipoPagamentoRepository tipoPagamentoRepository;
 
@@ -70,6 +71,7 @@ public class DocumentoFiscalService {
 
     @Autowired
     private JavaMailSender mailSender;
+
 
     public List<DocumentoFiscalDTO> buscarTodosDoc(){
 
@@ -114,6 +116,7 @@ public class DocumentoFiscalService {
         docEntity.setItens(itemsEntity);
         docEntity.setPagamentos((pagamentos(dto.getPagamentos(), docEntity)));
 
+<<<<<<< HEAD
         SimpleMailMessage email = new SimpleMailMessage();
         email.setTo("jefferson.ximenes11@hotmail.com");
         email.setSubject("Drogasil Butantã Filial 1 | Cupom de compra ");
@@ -146,6 +149,12 @@ public class DocumentoFiscalService {
         docEntity.setItens(itemsEntity);
 
         repository.save(docEntity);
+=======
+        docEntity.setPagamentos((pagamentos(dto.getPagamentos(), docEntity)));
+
+        repository.save(docEntity);
+
+>>>>>>> 0f36c1d8b82524a57026b8267198bfd155a79820
         estoqueService.atualizaEstoqueVenda(dto);
     }
 
@@ -192,7 +201,10 @@ public class DocumentoFiscalService {
         dataAbertura.setFilial(filial);
         dataAbertura.setOperacao(operacao);
         dataAbertura.setDataAbertura(dataSql);
+<<<<<<< HEAD
         dataAbertura.setDataFechamento(dataSql);
+=======
+>>>>>>> 0f36c1d8b82524a57026b8267198bfd155a79820
         repository.save(dataAbertura);
     }
 
