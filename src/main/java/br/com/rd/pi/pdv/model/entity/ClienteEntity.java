@@ -23,4 +23,6 @@ public class ClienteEntity implements Serializable {
     @Column(name = "DS_EMAIL")
     private String email;
 
+    @Column(name = "ID_CATEGORIA_CLIENTE")
+    private Long idCategoriaCliente = 1L; //validacao porra nenhuma
 }

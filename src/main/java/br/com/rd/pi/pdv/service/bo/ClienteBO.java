@@ -16,7 +16,7 @@ public class ClienteBO {
         dto.setIdCliente(entity.getIdCliente());
         dto.setNumeroCpf(entity.getNumeroCpf());
         dto.setEmail(entity.getEmail());
-
+        dto.setIdCategoriaCliente(entity.getIdCategoriaCliente());
         return dto;
     }
 
@@ -30,7 +30,7 @@ public class ClienteBO {
         entity.setIdCliente(dto.getIdCliente());
         entity.setNumeroCpf(dto.getNumeroCpf());
         entity.setEmail(dto.getEmail());
-
+        entity.setIdCategoriaCliente(dto.getIdCategoriaCliente());
         return entity;
     }
 

@@ -90,6 +90,7 @@ public class DocumentoFiscalService {
     }
 
     public void inserirVendaNormal(DocumentoFiscalDTO dto){
+        String emailDestino = dto.getCliente().getEmail();
         DocumentoFiscalEntity docEntity = documentoFiscalBO.parseToEntity(null, dto);
 
         if (dto.getCliente().getIdCliente() != null){
@@ -116,45 +117,8 @@ public class DocumentoFiscalService {
         docEntity.setItens(itemsEntity);
         docEntity.setPagamentos((pagamentos(dto.getPagamentos(), docEntity)));
 
-
-        SimpleMailMessage email = new SimpleMailMessage();
-        email.setTo("jefferson.ximenes11@hotmail.com");
-        email.setSubject("Drogasil Butantã Filial 1 | Cupom de compra ");
-
-        String corpoEmail = "";
-        String formaPagamento = "\nForma de Pagamento: " ;
-
-        for (PagamentoDocEntity pagamentosVenda : docEntity.getPagamentos()) {
-            formaPagamento += pagamentosVenda.getTipoPagamento().getDsTipoPagamento() + " ";
-        }
-
-        DecimalFormat decimal = new DecimalFormat("###.00");
-        DecimalFormat decimalTotal = new DecimalFormat("###.00");
-
-        for (DocumentoItemEntity itensVendidoDTO : itemsEntity ) {
-            corpoEmail +=
-                    "\n Produtos:\n"  +                                                                                    // Título
-                    " " + itensVendidoDTO.getQtdItem() + "X " +                                                            // Quantidade do produto
-                    itensVendidoDTO.getProduto().getDescricaoProduto() +                                                   // Descrição do Produto
-                    "\n Total R$ " + decimalTotal.format(itensVendidoDTO.getValorItem()) + "\n";                           // Valor Total do PRODUTO
-
-        }
-
-        email.setText("RD Gente que cuida de Gente \nAqui está o seu cupom!\n"                                              // Título do E-mail
-                + corpoEmail +                                                                                              // Corpo do E-mail, ta declarado aqui em cima
-                "\n\nTotal Compra R$ " + decimal.format(docEntity.getValorDocumento()) +
-                formaPagamento);                                                                                            // Total da compra toda
-
-        mailSender.send(email);                                                                                             // Enviar
-        docEntity.setItens(itemsEntity);
-
+        enviaEmail(docEntity,itemsEntity,emailDestino);
         repository.save(docEntity);
-
-        docEntity.setPagamentos((pagamentos(dto.getPagamentos(), docEntity)));
-
-        repository.save(docEntity);
-
-
         estoqueService.atualizaEstoqueVenda(dto);
     }
 
@@ -208,4 +172,36 @@ public class DocumentoFiscalService {
         repository.save(dataAbertura);
     }
 
+    private void enviaEmail(DocumentoFiscalEntity docEntity, List<DocumentoItemEntity> itemsEntity, String emailDestino){
+        SimpleMailMessage email = new SimpleMailMessage();
+        //email.setTo("jefferson.ximenes11@hotmail.com");
+        email.setTo(emailDestino);
+        email.setSubject("Drogasil Butantã Filial 1 | Cupom de compra ");
+
+        String corpoEmail = "";
+        String formaPagamento = "\nForma de Pagamento: " ;
+
+        for (PagamentoDocEntity pagamentosVenda : docEntity.getPagamentos()) {
+            formaPagamento += pagamentosVenda.getTipoPagamento().getDsTipoPagamento() + " ";
+        }
+
+        DecimalFormat decimal = new DecimalFormat("###.00");
+        DecimalFormat decimalTotal = new DecimalFormat("###.00");
+
+        for (DocumentoItemEntity itensVendidoDTO : itemsEntity ) {
+            corpoEmail +=
+                    "\n Produtos:\n"  +                                                                                    // Título
+                            " " + itensVendidoDTO.getQtdItem() + "X " +                                                            // Quantidade do produto
+                            itensVendidoDTO.getProduto().getDescricaoProduto() +                                                   // Descrição do Produto
+                            "\n Total R$ " + decimalTotal.format(itensVendidoDTO.getValorItem()) + "\n";                           // Valor Total do PRODUTO
+
+        }
+
+        email.setText("RD Gente que cuida de Gente \nAqui está o seu cupom!\n"                                              // Título do E-mail
+                + corpoEmail +                                                                                              // Corpo do E-mail, ta declarado aqui em cima
+                "\n\nTotal Compra R$ " + decimal.format(docEntity.getValorDocumento()) +
+                formaPagamento);                                                                                            // Total da compra toda
+
+        mailSender.send(email);                                                                                             // Enviar
+    }
 }
