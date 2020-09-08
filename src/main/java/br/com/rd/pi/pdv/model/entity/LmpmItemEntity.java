@@ -6,11 +6,13 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
-
 @Entity
 @Table(name = "TB_LMPM_ITEM")
 @Data
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@NamedQuery(name = "buscarProdutoLmpm",
+        query = "SELECT item FROM LmpmItemEntity item where item.produto.cdProduto =: produto ")
+
 public class LmpmItemEntity implements Serializable {
 
     @Id

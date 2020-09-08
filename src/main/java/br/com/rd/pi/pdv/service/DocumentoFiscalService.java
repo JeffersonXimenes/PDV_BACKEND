@@ -72,7 +72,6 @@ public class DocumentoFiscalService {
     @Autowired
     private JavaMailSender mailSender;
 
-
     public List<DocumentoFiscalDTO> buscarTodosDoc(){
 
         List <DocumentoFiscalDTO> listaDocumento = new ArrayList<>();
@@ -174,7 +173,6 @@ public class DocumentoFiscalService {
 
     private void enviaEmail(DocumentoFiscalEntity docEntity, List<DocumentoItemEntity> itemsEntity, String emailDestino){
         SimpleMailMessage email = new SimpleMailMessage();
-        //email.setTo("jefferson.ximenes11@hotmail.com");
         email.setTo(emailDestino);
         email.setSubject("Drogasil Butantã Filial 1 | Cupom de compra ");
 
@@ -194,7 +192,6 @@ public class DocumentoFiscalService {
                             " " + itensVendidoDTO.getQtdItem() + "X " +                                                            // Quantidade do produto
                             itensVendidoDTO.getProduto().getDescricaoProduto() +                                                   // Descrição do Produto
                             "\n Total R$ " + decimalTotal.format(itensVendidoDTO.getValorItem()) + "\n";                           // Valor Total do PRODUTO
-
         }
 
         email.setText("RD Gente que cuida de Gente \nAqui está o seu cupom!\n"                                              // Título do E-mail
