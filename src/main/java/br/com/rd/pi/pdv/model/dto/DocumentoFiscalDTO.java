@@ -1,5 +1,6 @@
 package br.com.rd.pi.pdv.model.dto;
 
+import br.com.rd.pi.pdv.model.entity.PagamentoDocEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -33,7 +34,9 @@ public class DocumentoFiscalDTO {
 
     private Integer numeroCaixa;
 
+    private Long numeroNota;
+
     private List<DocumentoItemDTO> itens;
 
-
+    private List<PagamentoDocDTO> pagamentos;
 }

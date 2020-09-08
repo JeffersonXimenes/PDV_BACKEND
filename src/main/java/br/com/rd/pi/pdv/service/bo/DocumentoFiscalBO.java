@@ -66,6 +66,7 @@ public class DocumentoFiscalBO {
         dto.setFlagNota(entity.getFlagNota());
         dto.setValorDocumento(entity.getValorDocumento());
         dto.setNumeroCaixa(entity.getNumeroCaixa());
+        dto.setNumeroNota(entity.getNumeroNota());
 
         return dto;
     }
@@ -79,27 +80,20 @@ public class DocumentoFiscalBO {
         if(dto == null)
             return entity;
 
-        entity.setIdDocumentoFiscal(dto.getIdDocumentoFiscal());
-        entity.setFilial(filialRepository.getOne(dto.getFilial().getCdFilial()));
-        entity.setOperacao(operacaoRepository.getOne(dto.getOperacao().getCdOperacao()));
-
-        entity.setCliente(clienteRepository.getOne(dto.getCliente().getIdCliente()));
-        entity.setRecarga(recargaRepository.getOne(dto.getRecarga().getIdRecarga()));
-
         entity.setDataAbertura(dto.getDataAbertura());
         entity.setDataFechamento(dto.getDataFechamento());
         entity.setFlagNota(dto.getFlagNota());
         entity.setValorDocumento(dto.getValorDocumento());
         entity.setNumeroCaixa(dto.getNumeroCaixa());
+        entity.setNumeroNota(dto.getNumeroNota());
 
-        List <DocumentoItemEntity> entidadeItem  = new ArrayList <>();
-
-        for (DocumentoItemDTO itemDTO: dto.getItens()) {
-            entidadeItem.add(documentoItemBO.parseToEntity(itemDTO,null));
-
+        if (dto.getItens() != null) {
+            List<DocumentoItemEntity> entidadeItem = new ArrayList<>();
+            for (DocumentoItemDTO itemDTO : dto.getItens()) {
+                entidadeItem.add(documentoItemBO.parseToEntity(itemDTO, null));
+            }
+            entity.setItens(entidadeItem);
         }
-        entity.setItens(entidadeItem);
-
         return entity;
     }
 }

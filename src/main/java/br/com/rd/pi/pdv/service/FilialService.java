@@ -16,7 +16,6 @@ public class FilialService {
 
     public FilialDTO BuscarFilial(Long codigo){
         return filialBo.parseToDTO(repository.getOne(codigo));
-
     }
 
 }

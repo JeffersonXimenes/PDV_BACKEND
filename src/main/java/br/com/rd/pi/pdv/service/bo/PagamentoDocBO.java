@@ -15,6 +15,9 @@ public class PagamentoDocBO {
     private TipoPagamentoRepository tipoPagamentoRepository;
 
     @Autowired
+    private TipoPagamentoBO tipoPagamentoBO;
+
+    @Autowired
     private DocumentoFiscalBO documentoFiscalBO;
 
     @Autowired
@@ -31,7 +34,7 @@ public class PagamentoDocBO {
         dto.setDocumentoFiscal(documentoFiscalBO.parseToDTO(entity.getDocumentoFiscal()));
         dto.setIdPagamento(entity.getIdPagamento());
         dto.setVlPagamento(entity.getVlPagamento());
-        dto.setIdTipoPagamento(entity.getTipoPagamento().getIdTipoPagamento());
+        dto.setTipoPagamento(tipoPagamentoBO.parseToDTO(entity.getTipoPagamento()));
 
         return dto;
     }
@@ -44,10 +47,9 @@ public class PagamentoDocBO {
         if (dto == null) {
             return entity;
         }
-        entity.setDocumentoFiscal(documentoFiscalRepository.getOne(dto.getDocumentoFiscal().getIdDocumentoFiscal()));
-        entity.setIdPagamento(dto.getIdPagamento());
         entity.setVlPagamento(dto.getVlPagamento());
-        entity.setTipoPagamento(tipoPagamentoRepository.getOne(dto.getIdTipoPagamento()));
+        entity.setTipoPagamento(tipoPagamentoRepository.getOne(dto.getTipoPagamento().getIdTipoPagamento()));
+
 
         return entity;
     }

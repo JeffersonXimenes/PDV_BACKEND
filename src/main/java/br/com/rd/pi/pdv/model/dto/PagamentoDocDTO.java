@@ -12,6 +12,6 @@ public class PagamentoDocDTO {
     private Long idPagamento;
     private DocumentoFiscalDTO documentoFiscal;
     private Double vlPagamento;
-    private Long idTipoPagamento;
+    private TipoPagamentoDTO tipoPagamento;
 
 }

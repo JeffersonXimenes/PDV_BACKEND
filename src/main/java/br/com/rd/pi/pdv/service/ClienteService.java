@@ -31,7 +31,6 @@ public class ClienteService {
         return clienteBO.parseToDTO(repository.findByNumeroCpf(cpf));
     }
 
-
     public List<ClienteDTO> buscarTodosCliente(){
         List<ClienteEntity> listEntity = repository.findAll();
         List<ClienteDTO> listDTO = new ArrayList<>();
