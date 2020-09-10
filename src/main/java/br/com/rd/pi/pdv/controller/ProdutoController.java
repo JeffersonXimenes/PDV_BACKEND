@@ -26,7 +26,7 @@ public class ProdutoController {
         List<LmpmItemEntity> listProdutosLmpm = service.teste(codigo);
 
         if (listProdutosLmpm.size() > 0)
-            return ResponseEntity.ok().body(listProdutosLmpm);
+            return ResponseEntity.ok().body(listProdutosLmpm.get(0));
         else
             return ResponseEntity.ok().body(service.buscarProdutoId(codigo));
     }
