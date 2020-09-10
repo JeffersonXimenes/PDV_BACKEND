@@ -89,7 +89,9 @@ public class DocumentoFiscalService {
     }
 
     public void inserirVendaNormal(DocumentoFiscalDTO dto){
-        String emailDestino = dto.getCliente().getEmail();
+        String emailDestino = null;
+        if(dto.getCliente().getEmail() != null)
+            emailDestino = dto.getCliente().getEmail();
         DocumentoFiscalEntity docEntity = documentoFiscalBO.parseToEntity(null, dto);
 
         if (dto.getCliente().getIdCliente() != null){
@@ -115,8 +117,8 @@ public class DocumentoFiscalService {
         }
         docEntity.setItens(itemsEntity);
         docEntity.setPagamentos((pagamentos(dto.getPagamentos(), docEntity)));
-
-        enviaEmail(docEntity,itemsEntity,emailDestino);
+        if (emailDestino != null)
+            enviaEmail(docEntity,itemsEntity,emailDestino);
         repository.save(docEntity);
         estoqueService.atualizaEstoqueVenda(dto);
     }
